@@ -42,4 +42,9 @@ Alphabets(A-Z,a-z),special symbols,numbers(0-9) :point_right: reserve words/cons
  :hugs: FIRST C PROGRAM :hugs: <br>
   :ghost: COMMENTS ( / * ...... * /):ghost:<br>
 :technologist: **MAIN()** <br>
-  
+  Variable declaration and usage <br>
+  :cherry_blossom: PRINTF() - it can print variables ,expressions and constants<br>
+   :maple_leaf: SCANF() - to input variables<br>
+   **COMPILATION AND EXECUTION OF CODE**<br>
+   
+   -----------------------------------------------------------------------------------------------------------------------------------
