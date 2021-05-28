@@ -7,6 +7,27 @@ A computer has its own set of instructions what we call computer language<br>
  Assembly language - Assembly language uses a mnemonic to represent each low-level machine instruction or opcode//instead of 0&1 we use english words ,names and symbols <br>
 Assembly code is converted into executable machine code by a utility program referred to as an assembler.
 2. High level language - lang like C,C++,JAVA etc<br>
+-----------------------------------------------------------------------------------------------------------------
+
+#### Origin of C:
+It was developed at Bell Labs, by Dennis Ritchie, Ken Thompson and others. It was a by-product of the UNIX operating system. Like other operating systems of that time, UNIX was written in assembly level language. </br>
+programs written in assembly level language are hard to debug and enhance, and UNIX wwas no exception.
+Ken Thompson then decided that a higher level language was needed for further development of UNIX , so he designed a language named "B".</br>
+
+Soon, Dennis Ritchie joined the UNIX project and started programming in B. In 1970, Bell Labs acquired  a PDP 11 for the UNIX project. Once unix was up and running on PDP 11, Thompson, rewrote a portion of UNIX in B.
+and it became apparent that B wasn't well suited for PDP 11, So Ritchie began to develop an "extended version of B". He named it as NB at first, nbut upon more developments, when it diverted more from B, name was changed to "C". </br>
+By 1973, the language was stable enough that UNIX could be written in C.
+It provided an important benifit : **portability**.  By writing compilers in C for other computers at Bell Labs, it couldb be used on other machines as well!
+
+#### Standardization:
+C continued to involved during the 1970 specially between 1977 and 1979.Iit was during this period the first book of C appeared, “ the C programming language” by Brian kernighan and Dennis Ritchie which was published in 1978 but in the absence of this official standard book for C this book known as the K & R or the “white book “, served as a standard reference.
+ During 1977, relatively few C programs and most of them were UNIX users. By the 1980s, however, C expanded beyond the narrow confines of the Unix world. C compilers became available on a variety of Machines, running a different operating system. In particular, C began to establish itself on the fast-growing IBM PC platform . </br>
+
+Programmers who wrote new C compilers relied on K and R as a reference. Unfortunately it was not clear about many of the features and it did not have a clear distinction which features belong to C and which were a part of Unix. Also, C continued to change after K&R  was published, with new features being added and a few older ones being removed. Need of a thorough, precise and up-to-date description of the language soon became Apparent.  Without such a standard numerous dialects would have ryzen 13 the portability of the C programs.
+The development of US standard for C began in 1983, under the auspices of the ANSI. After many revisions, the standard was completed in 1988 and formally approved in December 1989 as ANSI standard. In 1998, it  was approved by international organisation for standardization (ISO).
+This is reffered to as the *C89 version.
+
+-------------------
 
 Four important aspects of any programming language:/<br>
 how it stores data <br>
@@ -30,8 +51,14 @@ Alphabets(A-Z,a-z),special symbols,numbers(0-9) :point_right: reserve words/cons
  **Constants,reserve words and variables<br>**
  . A constant is an entity that doesn’t change: two types : primary and secondary constants <br>
  In PRIMARY constants ,we have integer contant(no commas,blank spaces ,no decimal points,no other symbols) <br>
- real constant(must have a decimal point)<br>
+ ### real constant <br>
    :nerd_face::nerd_face: when the real number is so too large ,it can be expressed in exponential form : mantissa and exponent part(-3.4e38 to 3.4e38) e or E <br>
+   Rules for creating a Float constant:
+* The mantissa part and the exponential part should be separated by a letter e or E.
+* The mantissa part may have a positive or negative sign. 
+* Default sign of mantissa part is positive. 
+* The exponent must have at least one digit, which must be a positive or negative integer. Default sign is positive.
+
    
  character constant: a single alphabet, a single digit or a single special symbol enclosed within single inverted commas.('A' , '6') <br>
  
@@ -48,3 +75,36 @@ Alphabets(A-Z,a-z),special symbols,numbers(0-9) :point_right: reserve words/cons
    **COMPILATION AND EXECUTION OF CODE**<br>
    
    -----------------------------------------------------------------------------------------------------------------------------------
+   
+   # C Instructions <br>
+   :jigsaw: A program is a set of **instructions**.<br>
+  :abacus: Three types of instructions in C :abacus::<br>
+:diamonds: Type Declaration Instruction –  to declare the type of variables used in a C program.<br>
+any variable that we are using in our program needs to be declared first.<br>
+- we can declare & initialize a varibale > int a = 9 ; float b = 3+ 0.5 ; <br>
+- The order in which we define the variables is sometimes important sometimes not. <br>
+- we cannot use *a* before defining it<br>
+-      int b = a + 5; 
+-      int a = 0 ; 
+This will work <br>
+-      int a,b,c ;
+-      a=b=c=10;
+but  will give error<br>
+-      int a=b=c= 10 ;
+:diamonds: Arithmetic Instruction – to perform arithmetic operations on constants and variables.<br>
+- It consists of a variable name on LHS of = and variable names , arithmetic operator or sconstants on RHS  of = <br>
+An arithmetic instruction could be of 3 types : integer mode ,real mode and mixed mode<br>
+:smiley:C allows only one variable on left-hand side of =. That is,**z = k * l** is legal, whereas **k * l = z** is illegal. </br>
+:smiley: MODULUS OPERATOR : only operates on integers , gives the remainder of two numbersa after division , the **sign** is always the sign of numerator <br>
+:slightly_smiling_face: -5 % 2 = –1, whereas, 5 % -2 = 1 :upside_down_face: <br>
+- We can store character constants in character variables and arithmetic operations can be peformed on characters.<br>
+ char c ; <br> 
+ c = 'A'// in c ,the ASCII code of A which is 65 is stored in binary form <br>
+ int d = c + 5 ;// valid statement . d = 70 <br>
+ - No operator is assumed to be present. It must be written explicitly. <br>
+   a = c.d.b(xy) is not equal to a = c * d * b * ( x * y ) <br>
+ - pow() function in math.h
+
+ 
+:diamonds: Control Instruction – This instruction is used to control the sequence of execution of various statements in a C program<br>
+   
