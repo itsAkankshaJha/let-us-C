@@ -1,0 +1,128 @@
+# Datatypes 
+Datatypes are the means to idenntify the type of data and associated operation to handle it. In C , we are having three types of datatypes:
+ ## Primary / Fundamental  Datatypes :
+  ## CHAR
+- char: The most basic data type in C. It stores a single character and requires a single byte of memory in almost all compilers.
+  ##### range - -128 to 127 
+  ##### size - 1 byte
+  
+  ### signed char : A signed char is same as an ordinary char  
+  - range from -128 to +127
+  ### unsigned char 
+   - an unsigned char has a range from 0 to 255
+ 
+  #### NOTE :
+          # include <stdio.h>
+          int main( )
+        {
+         char ch = 291 ;
+         printf ( "\n%d %c\n", ch, ch ) ;
+         return 0 ;
+        }
+        OUTPUT is # that is 35 
+        
+    ##### Quick explanation :
+    The reason is that ch has been defined as a char, and a char cannot take a value bigger than +127. Hence when value of ch exceeds +127, an appropriate value from the other       side of the range is picked up and stored in ch. This value in our case happens to be 35, hence # is printed out
+  ___
+  ## INT
+- int: As the name suggests, an int variable is used to store an integer. 
+  ##### For a 16-bit compiler like Turbo C or Turbo C++ the range is –32768 to 32767. , size - 2bytes
+  ##### For a 32-bit compiler like Visual Studio or gcc the range would be –2147483648 to +2147483647 , size - 4 bytes
+  #### NOTE : long integers cause the program to run a bit slower, while short need less space in memory and thus help speed up program execution
+  . By default, a short int is a signed short int and a long int is a signed long int
+  
+  #### Short int :
+   - 2 bytes
+   - We can write short int as **short**
+   - range : -32,768 to 32,767 
+   - format specifier - %hd 
+   
+   #### long int:
+   - 4 bytes
+   -  We can write long int as **long**
+   - -2147483648 to +2147483647
+   - format specifier - %ld 
+   
+   #### signed int- 
+   - 2 bytes
+   - range - same as int
+   - **by default all integers are signed**
+   
+   
+   #### unsigned int -
+   - 2 bytes
+   - With such a declaration, the range of permissible integer values (for a 32-bit compiler) will shift from the range –2147483648 to +2147483647 to the range 0 to 4294967295
+   - format specifier - %u 
+
+ #### NOTE ->  when the constant is small enough to be an int, but still we want to give it as much storage as a long, we add the suffix ‘L’ or ‘l’ at the end of the number, as in 23L. 
+ 
+       long i ;
+       short j ;
+       unsigned int a= 98;
+
+____
+   ## FLOAT
+ - It is used to store decimal numbers (numbers with floating point value) with single precision.
+ - range : -3.4e38 to +3.4e38
+ - size - 4 bytes
+ ##### If this is insufficient, then C offers a double datatype
+  
+   ___
+   ## DOUBLE
+- double: It is used to store decimal numbers (numbers with floating point value) with double precision.
+- range : -1.7e308 to +1.7e308.
+- size : 8 bytes
+- We use **long double** most frequently in our C programs .  A long double occupies 10 bytes in memory and ranges from -1.7e4932 to +1.7e4932.
+
+____
+## VOID
+- void : It is a keyword in C , that is considered as datatype in C . It is an empty datatype <br>
+
+     **void sum (int a, int b); – This function won’t return any value to the calling function.**
+- bool - The standard C99  for C language supports bool. it is used to store either 1 for TRUE or 0 for FALSE.
+
+
+  ### Datatype modifiers
+ C offers a feasibility to modify are datatypes ( like range of data) as per our needs <br>
+ Following are the datatype modifiers
+ - short - to reduce the range of the datatype to its half
+ - long - to double the range of datatype
+ - signed - When we aren't sure about the sign associated the value ( either negative or positive)
+ - unsigned - in instances , when we know that value will be positive ,then we make it unsigned.
+
+![Let us C pdf - Personal - Microsoft​ Edge 10-06-2021 11_22_34 PM](https://user-images.githubusercontent.com/72215893/121573684-26f2d480-ca43-11eb-8e3b-3a04d4c64758.png)
+______
+## Storage classes: 
+To fully define a variable, one needs tomention not only its ‘type’ but also its ‘storage class. All variables have a data type and a ‘storage class’. <br>
+A variable name identifies some physical location within the computer where the string of bits representing the variable’s value is stored. There are basically two kinds of locations in a computer — **Memory and CPU registers(A value stored in a CPU register can always be accessed faster than the
+one that is stored in memory. Therefore, if a variable is used at many places in a program, it is better to declare its storage class as register.)**. <br>
+It is the variable’s storage class that determines in which of these two types of locations, the value is stored. 
+#### A variables storage class tells four things about it - where it is stored , whats its initial value , What is its scope( in which functions the value of the variable would be available) & what is  its life (how long would the variable exist.)
+
+ #### There are 4 storage classes in C: 
+- 1. automatic storage class (auto)
+- 2. static storage class (static)
+- 3. register storage class
+- 4. external storage class
+
+![Storage Classes in C - GeeksforGeeks - Google Chrome 11-06-2021 04_51_34 PM](https://user-images.githubusercontent.com/72215893/121679255-c496e400-cad5-11eb-8a5b-e05057a9875f.png)
+
+#### auto
+     # include <stdio.h>
+     int main( )
+     { auto int i = 1 ; 
+      {  auto int i = 2 ;
+        { 
+          auto int i = 3 ; printf ( "%d ", i ) ;
+         } 
+         printf ( "%d ", i ) ;}
+       printf ( "%d\n", i ) ; 
+       return 0 ;
+      } // output - 3 2 1
+      // Note that the Compiler treats the three i’s as totally different variables, since they are defined in different blocks
+
+#### auto vs static
+![Let us C pdf and 3 more pages - Personal - Microsoft​ Edge 11-06-2021 05_00_07 PM](https://user-images.githubusercontent.com/72215893/121680114-c9a86300-cad6-11eb-9fea-d70c18d8e5d1.png)
+
+
+
