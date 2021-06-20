@@ -1,0 +1,99 @@
+## Storage classes: 
+To fully define a variable, one needs tomention not only its ‘type’ but also its ‘storage class. All variables have a data type and a ‘storage class’. <br>
+A variable name identifies some physical location within the computer where the string of bits representing the variable’s value is stored. There are basically two kinds of locations in a computer — **Memory and CPU registers(A value stored in a CPU register can always be accessed faster than the
+one that is stored in memory. Therefore, if a variable is used at many places in a program, it is better to declare its storage class as register.)**. <br>
+It is the variable’s storage class that determines in which of these two types of locations, the value is stored. 
+#### A variables storage class tells four things about it - where it is stored , whats its initial value , What is its scope( in which functions the value of the variable would be available) & what is  its life (how long would the variable exist.)
+
+ #### There are 4 storage classes in C: 
+- 1. automatic storage class (auto)
+- 2. static storage class (static)
+- 3. register storage class
+- 4. external storage class
+
+![Storage Classes in C - GeeksforGeeks - Google Chrome 11-06-2021 04_51_34 PM](https://user-images.githubusercontent.com/72215893/121679255-c496e400-cad5-11eb-8a5b-e05057a9875f.png)
+
+#### auto
+     # include <stdio.h>
+     int main( )
+     { auto int i = 1 ; 
+      {  auto int i = 2 ;
+        { 
+          auto int i = 3 ; printf ( "%d ", i ) ;
+         } 
+         printf ( "%d ", i ) ;}
+       printf ( "%d\n", i ) ; 
+       return 0 ;
+      } // output - 3 2 1
+      // Note that the Compiler treats the three i’s as totally different variables, since they are defined in different blocks
+
+#### auto vs static
+![Let us C pdf and 3 more pages - Personal - Microsoft​ Edge 11-06-2021 05_00_07 PM](https://user-images.githubusercontent.com/72215893/121680114-c9a86300-cad6-11eb-9fea-d70c18d8e5d1.png)
+
+
+
+##### NOTE (for register class):
+ even though we have declared the storage class of i as register,we cannot say for sure that the value of i would be stored in a CPU
+register. Why? Because the number of CPU registers are limited, andthey may be busy doing some other task. What happens in such an
+event... the variable works as if its storage class is auto.  Not every type of variable can be stored in a CPU register. For example,if the microprocessor has 16-bit registers then they cannot hold a floatvalue or a double value, which require 4 and 8 bytes respectively.However, if you use the register storage class for a float or a double
+variable, you won’t get any error messages. All that would happen is thecompiler would treat the variables to be of auto storage class.  
+
+##### NOTE (for static class):
+avoid using static variables unless you really need them. Because their values are kept in memorywhen the variables are not active, which means they take up space in
+memory that could otherwise be used by other variables. 
+
+
+##### NOTE (for extern class):
+ External variables are declared outside all functions, yet are available to all functions that care to use them <br>
+      
+      # include <stdio.h>
+     int i ;
+     void increment( ) ;
+     void decrement( ) ;
+    int main( )
+    { printf ( "\ni = %d", i ) ;
+      increment( ) ; 
+      increment( ) ;
+      decrement( ) ; 
+      decrement( ) ;
+      return 0 ; }
+    void increment( )
+     { i = i + 1 ; printf ( "on incrementing i = %d\n", i ) ; }
+    void decrement( )
+     {  i = i - 1 ;  printf ( "on decrementing i = %d\n", i ) ;  }
+     // the value of i is available to the functions increment( ) & decrement( ) since i has been declared outside all functions.
+     
+  ##### Note : When we declare a variable no space is reserved for it, whereas, when we define it space gets reserved for it in memory .
+          
+          extern int y ;
+          int y = 31 ;
+  
+  #### Some important facts
+  - All variables that are defined inside a function are normally created on the stack each time the function is called. These variables die as
+soon as control goes back from the function. However, if thevariables  are  static then they do notget created on the stack. Instead they are created in a place in
+memory called **‘Data Segment’**. Such variables die only when program execution comes to an end. 
+
+-  If a variable is defined outside all functions, then not only is it available to all other functions in the file in which it is defined, but is 
+also available to functions defined in other files. In the other files the variable should be declared as extern. 
+
+- In the following statements the first three are definitions, whereas, the last one is a declaration.
+    
+       auto int i ;
+       static int j ;
+       register int k ;
+       extern int l ;
+       
+       
+  ### Which to Use When 🤔
+
+We decide which memory has to be used, keeping in mind the following points: 
+- economise the memory space consumed by the variables
+- improve the speed of execution of the program  
+**Some ground rules to Decide the memory:**  
+1. Use static storage class only if you want the value of a variable to persist between different function calls.
+2. Use register storage class for only those variables that are being used very often in a program. (because it is limited) A typical application of register storage class is loop counters, which get used a number of times in a program.
+3. Use extern storage class for only those variables that are being used by almost all the functions in the program. This would avoid unnecessary passing of these variables as arguments when making a function call. Declaring all the variables as extern would amount to a lot of wastage of memory space because these variables would remain active throughout the life of the program.
+4. If you don’t have any of the express needs mentioned above, then use the auto storage class. In fact, most of the times, we end upusing the auto variables. This is because once we have used thevariables in a function and are returning from it, we don’t mind losing them.
+     
+     
+    
